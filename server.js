@@ -32,6 +32,6 @@ app.get('/*', (req, res) =>
   res.sendFile('index.html', {root: 'dist/notes-client/'}),
 );
 
-app.listen(port, function() {
+app.listen(process.env.PORT || port, function() {
   console.log("Node Express server for " + app.name + " listening on http://localhost:" + port);
 });

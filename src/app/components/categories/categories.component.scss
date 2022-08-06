@@ -1,0 +1,21 @@
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+
+  &-item {
+    min-width: 330px;
+    margin: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    .title {
+      padding: 10px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .tasks {
+      padding: 10px;
+      &-item {
+        display: flex;
+      }
+    }
+  }
+}

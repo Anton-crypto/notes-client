@@ -1,3 +1,15 @@
-<div>
-  категори
+<div class="categories" *ngIf="categories">
+  <div class="categories-item" *ngFor="let category of categories">
+    <div class="title"> {{ category.title }}</div>
+    <div class="tasks" *ngIf="category.todos">
+      <div class="tasks-item" *ngFor="let todo of category.todos">
+        <div>
+          <input type="checkbox" [(ngModel)]="todo.isCompleted">
+        </div>
+        <div [style]="todo.isCompleted ? 'text-decoration: line-through' : ''">
+          {{todo.text}}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

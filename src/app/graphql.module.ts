@@ -20,7 +20,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
         return {
           cache: new InMemoryCache(),
           link: httpLink.create({
-            uri: 'https://notes-back-api.herokuapp.com/categories',
+            uri: 'https://notes-back-api.herokuapp.com/graphql',
           }),
         };
       },

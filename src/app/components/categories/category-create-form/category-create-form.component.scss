@@ -1,0 +1,16 @@
+.dialog {
+  &-actions-castom {
+    display: flex;
+    justify-content: space-between;
+  }
+  &-title-castom {
+    text-align: center;
+  }
+  &-form-castom {
+    width: 100%;
+    &-item {
+      width: 100%;
+    }
+  }
+}
+

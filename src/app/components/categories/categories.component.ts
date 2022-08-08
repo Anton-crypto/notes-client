@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Apollo, gql} from 'apollo-angular';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-categories',
@@ -8,27 +8,16 @@ import {Apollo, gql} from 'apollo-angular';
 })
 export class CategoriesComponent implements OnInit {
 
-  constructor(private apollo: Apollo) {}
-  categories: Array<any> = []
+  constructor(
+    private categoryService : CategoryService
+  ) {}
+
+  categories: any;
 
   ngOnInit(): void {
-    this.apollo.watchQuery({
-      query: gql`
-        {
-          getCategories {
-            id
-            title
-            todos {
-              id
-              text
-              isCompleted
-            }
-          }
-        }
-      `,
-    }).valueChanges.subscribe((result: any) => {
-      this.categories = result.data.getCategories;
-      console.log(this.categories)
+    this.categoryService.categories.subscribe((categories) => {
+      this.categories = categories;
     });
+    this.categoryService.queryCategories();
   }
 }

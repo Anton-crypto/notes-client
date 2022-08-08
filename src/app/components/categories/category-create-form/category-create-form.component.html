@@ -1,0 +1,23 @@
+<h1 mat-dialog-title class="dialog-title-castom">Новая задача</h1>
+<form class="example-form dialog-form-castom" [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill" class="dialog-form-castom-item">
+      <mat-label>Названеи задачи...</mat-label>
+      <input matInput formControlName="todoText">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="dialog-form-castom-item" >
+      <mat-label>Категория</mat-label>
+      <mat-select formControlName="categorySelectItem">
+        <mat-option *ngFor="let item of categoriesSelect" [value]="item.id">{{ item.title }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="categoryForm.value.categorySelectItem == ''" class="example-full-width" appearance="fill" class="dialog-form-castom-item" >
+      <mat-label>Название категории...</mat-label>
+      <input matInput formControlName="categoryTitle">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="dialog-actions-castom">
+    <button mat-button mat-dialog-close>Отмена</button>
+    <button mat-button type="submit" [disabled]="!categoryForm.valid">Ok</button>
+  </div>
+</form>

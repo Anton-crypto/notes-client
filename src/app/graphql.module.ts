@@ -20,7 +20,7 @@ import {HttpLink} from 'apollo-angular/http';
             }
           }),
           link: httpLink.create({
-            uri: 'http://localhost:8070/graphql',
+            uri: 'https://notes-back-api.herokuapp.com/graphql',
           }),
           defaultOptions : {
             watchQuery: {

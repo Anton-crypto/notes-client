@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, ValidatorFn } from '@angular/forms';
 import { CategoryService } from 'src/app/services/category.service';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
@@ -12,15 +12,16 @@ import { filter, startWith, takeUntil } from 'rxjs/operators';
   templateUrl: './category-create-form.component.html',
   styleUrls: ['./category-create-form.component.scss']
 })
-export class CategoryCreateFormComponent implements OnInit, OnDestroy {
+export class CategoryCreateFormComponent implements OnInit {
 
   title = 'category-create-form';
   categoriesSelect: Array<any> = []
   selectItem: any
+  selectedItem: any
 
   categoryForm = this.fb.group({
     todoText: ['', Validators.required],
-    categoryTitle: [''],
+    categoryTitle: ['', Validators.required],
     categorySelectItem: [''],
   });
 
@@ -34,9 +35,6 @@ export class CategoryCreateFormComponent implements OnInit, OnDestroy {
     this.getCategoryTitle();
     this.categoryService.queryCategories();
   }
-  ngOnDestroy() {
-    // this.categoryService.queryCategories();
-  }
   private getCategoryTitle(): void {
     this.categoryService.categories.subscribe((listTitle) =>{
       this.categoriesSelect = [...listTitle, {
@@ -44,6 +42,22 @@ export class CategoryCreateFormComponent implements OnInit, OnDestroy {
         id:""
       }]
     })
+  }
+  changeCategory(id: any) {
+    const categorySelectItem = this.categoryForm.get('categorySelectItem');
+    const categoryTitle = this.categoryForm.get('categoryTitle');
+
+    const categorySelectValidators: ValidatorFn[] = [
+      Validators.required,
+    ];
+
+    if (id == "") {
+      categoryTitle?.setValidators(categorySelectValidators);
+    } else {
+      categoryTitle?.clearValidators();
+    }
+
+    categoryTitle?.updateValueAndValidity();
   }
   async onSubmit(): Promise<void> {
 
@@ -71,7 +85,6 @@ export class CategoryCreateFormComponent implements OnInit, OnDestroy {
       }
     `
     this.categoryService.mutationCategories(queryRequest);
-    // this.categoryService.queryCategories();
     this.dialogRef.close();
   }
   createTodo(text: string, categoryId: string) : void {
@@ -91,7 +104,6 @@ export class CategoryCreateFormComponent implements OnInit, OnDestroy {
     `
 
     this.categoryService.mutationCategories(queryRequest);
-    // this.categoryService.queryCategories();
     this.dialogRef.close();
   }
   onNoClick(): void {

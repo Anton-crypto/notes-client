@@ -20,4 +20,19 @@ export class CategoriesComponent implements OnInit {
     });
     this.categoryService.queryCategories();
   }
+
+  changeTodo(isCompleted: Boolean, idTodo: String) {
+    let todo =
+    `
+      mutation {
+        updateTodo (updateTodoArgs: {
+          idTodo: "${idTodo}"
+          isCompleted: ${isCompleted}
+        }) {
+          isCompleted
+        }
+      }
+    `;
+    this.categoryService.mutationCategories(todo);
+  }
 }

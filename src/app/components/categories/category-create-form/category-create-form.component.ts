@@ -91,7 +91,7 @@ export class CategoryCreateFormComponent implements OnInit {
     let queryRequest =
     `
       mutation {
-        addTodo (categoryArgs: {
+        addTodo (todoArgs: {
           text: "${text}"
           categoryId: "${categoryId}"
         }) {

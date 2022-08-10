@@ -1,4 +1,4 @@
-<p align="center">
+<p align="center" width="200" height="200">
   <img src="https://losmejorescursosde.com/wp-content/uploads/2021/08/Angular_full_color_logo.svg.png" height="32"/>
 </p>
 

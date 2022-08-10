@@ -1,6 +1,5 @@
 <p align="center">
-  <a href="https://www.angular.io"><strong>www.angular.io</strong></a>
-  <br>
+  <img src="https://losmejorescursosde.com/wp-content/uploads/2021/08/Angular_full_color_logo.svg.png" height="32"/>
 </p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456

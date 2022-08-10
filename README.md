@@ -1,5 +1,9 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://www.tangram-studio.com/OutClients/Angular.png" width="200" alt="Nest Logo" /></a>
+  <img src="aio/src/assets/images/logos/angular/angular.png" alt="angular-logo" width="120px" height="120px"/>
+  <br>
+  <i>Angular is a development platform for building mobile and desktop web applications
+    <br> using Typescript/JavaScript and other languages.</i>
+  <br>
 </p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
